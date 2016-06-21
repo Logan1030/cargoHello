@@ -136,6 +136,8 @@
                           <cargo.servlet.port>8084</cargo.servlet.port>
                           <cargo.tomcat.ajp.port>8098</cargo.tomcat.ajp.port>
                           <cargo.hostname>localhost</cargo.hostname>
+                          <cargo.rmi.port>8206</cargo.rmi.port>
+                          <cargo.tomcat.uriencoding>${project.build.sourceEncoding}</cargo.tomcat.uriencoding>
                     </properties>
 		      </configuration>
 		  </configuration>
