@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cn.cargo</groupId>
+  <artifactId>cargoHello</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+  <!-- environment setting -->
+  <jdk.version>1.8</jdk.version>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <plugins>
+      <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/classes/</outputDirectory>
+      <!-- Eclipse 插件 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-eclipse-plugin</artifactId>
+			<version>2.9</version>
+			<configuration>
+				<downloadSources>${downloadSources}</downloadSources>
+				<downloadJavadocs>false</downloadJavadocs>
+				<wtpversion>2.0</wtpversion>
+				<jeeversion>5.0</jeeversion>
+				<!-- <jeeversion>6.0</jeeversion> -->
+				<additionalConfig>
+					<file>
+						<name>.settings/org.eclipse.core.resources.prefs</name>
+						<content>
+							<![CDATA[eclipse.preferences.version=1${line.separator}encoding/<project>=${project.build.sourceEncoding}${line.separator}]]>
+						</content>
+					</file>
+				</additionalConfig>
+				<additionalProjectnatures>
+					<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+				</additionalProjectnatures>
+			</configuration>
+		</plugin>
+      <!-- resource插件 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>2.6</version>
+		</plugin>
+		
+		<!-- install插件 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-install-plugin</artifactId>
+			<version>2.4</version>
+		</plugin>
+		
+		<!-- clean插件 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-clean-plugin</artifactId>
+			<version>2.5</version>
+		</plugin>
+		<!-- ant插件 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-antrun-plugin</artifactId>
+			<version>1.7</version>
+		</plugin>
+		
+		<!-- dependency插件 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-dependency-plugin</artifactId>
+			<version>2.5.1</version>
+		</plugin>
+      <!-- 自动化部署 -->
+		<plugin>
+		  <groupId>org.codehaus.cargo</groupId>
+		  <artifactId>cargo-maven2-plugin</artifactId>
+		  <version>1.4.5</version>
+		  <executions>
+	       <execution>
+		      <id>start-container</id>
+		      <phase>pre-integration-test</phase>
+		      <goals>
+		        <goal>start</goal>
+		      </goals>
+		    </execution>
+		    <execution>
+		      <id>stop-container</id>
+		      <phase>post-integration-test</phase>
+		      <goals>
+		        <goal>stop</goal>
+		      </goals>
+		    </execution>
+		    <execution>
+		      <id>run-container</id>
+		      <phase>install</phase>
+		      <goals>
+		        <goal>run</goal>
+		      </goals>
+		    </execution>
+		  </executions>
+		  <configuration>
+		      <wait>false</wait>
+		      <container>
+		          <containerId>tomcat8x</containerId>
+		          <zipUrlInstaller>
+		              <url>https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.0.36/bin/apache-tomcat-8.0.36.tar.gz</url>
+		              <downloadDir>${project.build.directory}/downloads</downloadDir>
+		              <extractDir>${project.build.directory}/extracts</extractDir>
+		          </zipUrlInstaller>
+		          <home>${project.build.directory}/extracts/apache-tomcat-8.0.36/apache-tomcat-8.0.36</home>
+		      </container>
+		     <configuration>
+		         <type>standalone</type>
+		         <home>${project.build.directory}/tomcat8x</home>
+		         <properties>
+                          <cargo.servlet.port>8084</cargo.servlet.port>
+                          <cargo.tomcat.ajp.port>8098</cargo.tomcat.ajp.port>
+                          <cargo.hostname>localhost</cargo.hostname>
+                    </properties>
+		      </configuration>
+		  </configuration>
+		  
+		</plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <warSourceDirectory>webapp</warSourceDirectory>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>${jdk.version}</source>
+		  <target>${jdk.version}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+</project>
