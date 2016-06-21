@@ -9,6 +9,7 @@
   <!-- environment setting -->
   <jdk.version>1.8</jdk.version>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <downloadSources>true</downloadSources>
   </properties>
   
   <build>
@@ -24,7 +25,6 @@
 				<downloadJavadocs>false</downloadJavadocs>
 				<wtpversion>2.0</wtpversion>
 				<jeeversion>5.0</jeeversion>
-				<!-- <jeeversion>6.0</jeeversion> -->
 				<additionalConfig>
 					<file>
 						<name>.settings/org.eclipse.core.resources.prefs</name>
