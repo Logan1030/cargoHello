@@ -11,6 +11,7 @@
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
+  <build>
   <plugins>
       <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/classes/</outputDirectory>
       <!-- Eclipse 插件 -->
@@ -69,6 +70,25 @@
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-dependency-plugin</artifactId>
 			<version>2.5.1</version>
+		</plugin>
+		<!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.4</version>
+			<configuration>
+				<encoding>${project.build.sourceEncoding}</encoding>
+			</configuration>
+		</plugin>
+		<!-- war 打包插件, 设定war包名称不带版本号 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>2.4</version>
+			<configuration> 
+				<webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
+				<warName>${project.artifactId}</warName>
+			</configuration>
 		</plugin>
       <!-- 自动化部署 -->
 		<plugin>
@@ -138,4 +158,5 @@
         </configuration>
       </plugin>
     </plugins>
+    </build>
 </project>
