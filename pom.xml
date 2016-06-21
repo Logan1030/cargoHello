@@ -162,7 +162,7 @@
 			  <!--将资源文件打到classes目录下-->
 			   <webResources>
 			      <resource>
-                    <directory>src/main/webapp/*.jsp,src/main/webapp/WEB-INF/*.xml</directory>
+                    <directory>src/main/webapp/*.jsp</directory>
                     <targetPath>WEB-INF/</targetPath>
                     <filtering>true</filtering>
                   </resource>
