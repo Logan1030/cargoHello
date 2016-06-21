@@ -108,13 +108,7 @@
 		  <artifactId>cargo-maven2-plugin</artifactId>
 		  <version>1.4.5</version>
 		  <executions>
-	         <execution>  
-		        <id>init-container</id><!--初始化容器时先关闭,避免JVM端口被绑定-->  
-		        <phase>validate</phase>  
-		        <goals>
-		         <goal>stop</goal>
-		        </goals>  
-		    </execution>  
+	          
 		    <!--如下的两个阶段主要用于集成测试，如果你只是部署到环境可以忽略它们 -->  
 		    <execution>  
 		          <id>start-container</id>  
