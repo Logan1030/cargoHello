@@ -97,7 +97,7 @@
 		      <id>start-container</id>
 		      <phase>install</phase>
 		      <goals>
-		        <goal>start</goal>
+		        <goal>run</goal>
 		      </goals>
 		    </execution>
 		  </executions>
