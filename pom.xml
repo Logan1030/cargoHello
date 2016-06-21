@@ -163,7 +163,7 @@
 			   <webResources>
 			      <resource>
                     <directory>src/main/webapp</directory>
-                    <targetPath>${project.build.directory}/tomcat8x/${project.artifactId}</targetPath>
+                    <targetPath>WEB-INF</targetPath>
                     <filtering>true</filtering>
                   </resource>
 			   </webResources>
