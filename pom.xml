@@ -86,11 +86,11 @@
 			<artifactId>maven-war-plugin</artifactId>
 			<version>2.4</version>
 			<configuration> 
-				 <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
+				<webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>
 				<warName>${project.artifactId}</warName>
 			</configuration>
 		</plugin>
-      <!-- 自动化部署 -->
+       <!-- 自动化部署 -->
 		<plugin>
 		  <groupId>org.codehaus.cargo</groupId>
 		  <artifactId>cargo-maven2-plugin</artifactId>
@@ -147,4 +147,14 @@
       </plugin>
     </plugins>
     </build>
+    <!-- 开发者信息 -->
+	<developers>  
+		<developer>
+			<id>yubin</id>
+			<name>yubin</name>
+			<email>598628744@qq.com</email>
+			<roles><role>Project lead</role></roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
 </project>
