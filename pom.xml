@@ -168,14 +168,21 @@
 		  <artifactId>cargo-maven2-plugin</artifactId>
 		  <version>1.4.5</version>
 		  <executions>
-	       <execution>
-		      <id>start-container</id>
-		      <phase>install</phase>
-		      <goals>
-		        <goal>run</goal>
-		      </goals>
-		    </execution>
-		  </executions>
+		       <execution>
+			      <id>start-container</id>
+			      <phase>pre-integration-test</phase>
+			      <goals>
+			        <goal>start</goal>
+			      </goals>
+			    </execution>
+			    <execution>
+			      <id>stop-container</id>
+			      <phase>post-integration-test</phase>
+			      <goals>
+			        <goal>stop</goal>
+			      </goals>
+			    </execution>
+			  </executions>
 		  <configuration>
 		      <wait>false</wait>
 		      <container>
